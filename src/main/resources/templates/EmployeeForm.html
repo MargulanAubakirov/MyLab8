@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layouts/layout}" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{employee.add.form}">Add Employee Form</title>
+</head>
+<body>
+    <div class="col" layout:fragment="main-content">
+        <form th:object="${employee}" action="#" th:action="@{/employee_input}" enctype="multipart/form-data" method="post">
+            <fieldset>
+                <legend th:text="#{employee.add}">Add an employee</legend>
+                <ul th:if="${#fields.hasErrors('*')}">
+                    <li th:each="err : ${#fields.errors('*')}" th:text="${err}" >Input is incorrect</li>
+                </ul>
+                <p>
+                    <label for="employeeImage" th:text="#{employee.image} + ': '">Employee photo: </label>
+                    <input id="employeeImage" th:field="*{employeeImage}" type="file" class="form:input-large" />
+                    <p th:if="${#fields.hasErrors('employeeImage')}" th:errors="*{employeeImage}"
+                       th:style="${'color: red;'}">Incorrect file</p>
+                </p>
+                <p>
+                    <label for="id">ID: </label>
+                    <input id="id" th:field="*{id}"/>
+                    <p th:if="${#fields.hasErrors('id')}" th:errors="*{id}" th:style="${'color: red;'}">Incorrect data</p>
+                </p>
+                <p>
+                    <label for="firstName" th:text="#{firstName}+': '">First Name: </label>
+                    <input id="firstName" th:field="*{firstName}"/>
+                    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:style="${'color: red;'}">Incorrect name</p>
+                </p>
+                <p>
+                    <label for="lastName" th:text="#{lastName}+': '">Last Name: </label>
+                    <input id="lastName" th:field="*{lastName}"/>
+                    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:style="${'color: red;'}">Incorrect name</p>
+                </p>
+
+                <p>
+                    <label for="birthDate" th:text="#{birthDay} + ': '">Date of birth: </label>
+                    <input th:field="*{birthDate}" id="birthDate" />
+                    <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}" th:style="${'color: red;'}" />
+                </p>
+                <p>
+                    <label for="salaryLevel" th:text="#{salaryLevel} + ': '">Salary: </label>
+                    <input th:field="*{salaryLevel}" id="salaryLevel" />
+                    <p th:if="${#fields.hasErrors('salaryLevel')}" th:errors="*{salaryLevel}" th:style="${'color: red;'}" />
+                </p>
+                <h4 th:text="#{address}+':'">Address:</h4>
+                <p>
+                    <label for="street" th:text="#{address.street} + ':'">Street: </label>
+                    <input th:field="*{address.street}" id="street" />
+                    <p th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}" th:style="${'color: red;'}" />
+                </p>
+                <p>
+                    <label for="state" th:text="#{address.state} +':'">State: </label>
+                    <input th:field="*{address.state}" id="state" />
+                    <p th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}" th:style="${'color: red;'}" />
+                </p>
+                <p>
+                    <label for="zipCode" th:text="#{address.zipCode} +':'">Zip code: </label>
+                    <input th:field="*{address.zipCode}" id="zipCode" />
+                    <p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}" th:style="${'color: red;'} " />
+                </p>
+                <div id="buttons">
+                    <input id="reset" type="reset" tabindex="4" th:value="#{reset}" value="Rest"/>
+                    <input id="submit" type="submit" tabindex="5" th:value="#{employee.add.btn}" value="Add Employee"/>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+</body>
+</html>

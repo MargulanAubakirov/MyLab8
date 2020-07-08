@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layouts/layout}" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{employee.add.form}">Add Employee Form</title>
+</head>
+<body>
+    <div class="col" layout:fragment="main-content">
+        <form th:object="${member}" action="#" th:action="@{/member/member_input}" method="post">
+            <fieldset>
+                <legend th:text="#{employee.add}">Add an employee</legend>
+                <ul th:if="${#fields.hasErrors('*')}">
+                    <li th:each="err : ${#fields.errors('*')}" th:text="${err}" >Input is incorrect</li>
+                </ul>
+                <p>
+                    <label for="firstName" th:text="#{firstName}+':'">First Name: </label>
+                    <input th:field="*{firstName}" id="firstName" />
+                    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:style="${'color: red;'}">Incorrect name</p>
+                </p>
+                <p>
+                    <label for="lastName" th:text="#{lastName}+': '">Last Name: </label>
+                    <input id="lastName" th:field="*{lastName}"/>
+                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:style="${'color: red;'}">Incorrect name</p>
+                </p>
+
+                <p>
+                    <label for="memberNumber" th:text="#{member.number} + ': '">Member Number: </label>
+                    <input th:field="*{memberNumber}" id="memberNumber" />
+                    <p th:if="${#fields.hasErrors('memberNumber')}" th:errors="*{memberNumber}" th:style="${'color: red;'}" />
+                </p>
+                <p>
+                    <label for="age" th:text="#{age} + ': '">Age: </label>
+                    <input th:field="*{age}" id="age" />
+                    <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" th:style="${'color: red;'}" />
+                </p>
+                </p>
+                <div id="buttons">
+                    <input id="reset" type="reset" tabindex="4" th:value="#{reset}" value="Rest"/>
+                    <input id="submit" type="submit" tabindex="5" th:value="#{member.add.btn}" value="Add member"/>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

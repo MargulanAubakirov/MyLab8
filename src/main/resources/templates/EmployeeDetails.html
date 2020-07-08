@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layouts/layout}" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{employee.save}">Save Employee</title>
+</head>
+<body>
+    <div class="col" layout:fragment="main-content">
+        <h4 th:text="#{employee.have.been.saved}">The employee details have been saved.</h4>
+        <p>
+            <h5 th:text="#{details}">Details:</h5>
+            <div>
+                <img th:alt="${employee.imageFileName}" th:src="@{/img/{imageFileName}(imageFileName=${employee.imageFileName})}" style="width:30%"/>
+            </div>
+            <p th:text="#{firstName} + ': '+${employee.firstName}">First Name: First name</p>
+            <p th:text="#{lastName} + ': '+${employee.lastName}">Last Name: Last name</p>
+            <p th:text="#{birthDay} + ': '+${employee.birthDate}">Date of birth: birth date</p>
+        </p>
+    </div>
+</body>
+</html>

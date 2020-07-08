@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Image upload error</title>
+</head>
+<body>
+<img src="#" th:src="@{/images/error_page.jpg}" htmlEscape="true" alt="Page not found!!!" />
+
+<H3 th:text="${url}"></H3>
+<H2 th:text="${exception.toString()}"></H2>
+
+<p>
+    <button type=button  onclick=window.location.href="/employee_input">Home</button>
+</p>
+
+</body>
+</html>

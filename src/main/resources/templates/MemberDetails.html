@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{employee.save}"/>Save Employee</title>
+</head>
+<body>
+    <div class="col" layout:fragment="main-content">
+        <h5 th:text="#{details}+':'">Details:</h5>
+        <p th:text="#{firstName}+': ' +${member.firstName}">First Name: first name</p>
+        <p th:text="#{lastName}+':'+${member.lastName}">Last Name: last name</p>>
+        <p th:text="#{age}+':'+${member.age}">Age: 18</p>
+    </div>
+</body>
+</html>
